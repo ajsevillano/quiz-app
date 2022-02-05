@@ -1,0 +1,61 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #282c34;
+  height: 200px;
+  width: 370px;
+  margin: 1.4rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  position: relative;
+  box-shadow: 0 2px 4px 0 hsla(0, 0%, 0%, 0.09);
+}
+
+.card:hover {
+  background-color: #1abc9c;
+  color: white;
+  cursor: pointer;
+}
+
+.card p {
+  margin: 0 1.5rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.answer-letter {
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0.4rem;
+  position: absolute;
+  top: -25px;
+  box-shadow: 0 2px 4px 0 hsla(0, 0%, 0%, 0.09);
+}
+
+.purple {
+  background-color: #9b59b6;
+}
+
+.green {
+  background-color: #cf6a87;
+}
+
+.blue {
+  background-color: #3498db;
+}
+
+.dark-blue {
+  background-color: #34495e;
+}
+
+@media screen and (max-width: 414px) {
+  .card {
+    height: 85px;
+    width: 85%;
+  }
+}
