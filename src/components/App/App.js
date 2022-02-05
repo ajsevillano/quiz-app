@@ -11,26 +11,32 @@ function App() {
   const [lives, setLives] = useState(3);
 
   useEffect(() => {
-    async function fetchUsers() {
-      const fetchResponse = await fetch(
-        'https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple',
-        {
-          method: 'GET',
-        }
-      );
-      //Store the response.
-      const response = await fetchResponse.json();
-      setData(response.results);
+    if (lives === 0) {
+      setScore(0);
+      setAnswers([]);
+      setData([{}]);
+    } else {
+      async function fetchUsers() {
+        const fetchResponse = await fetch(
+          'https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple',
+          {
+            method: 'GET',
+          }
+        );
+        //Store the response.
+        const response = await fetchResponse.json();
+        setData(response.results);
 
-      //Store the answers
-      const answersArrayFlatted = flatAnswerArray(
-        response.results[0].correct_answer,
-        response.results[0].incorrect_answers
-      );
-      const answersArray = shuffle(answersArrayFlatted);
-      setAnswers(answersArray);
+        //Store the answers
+        const answersArrayFlatted = flatAnswerArray(
+          response.results[0].correct_answer,
+          response.results[0].incorrect_answers
+        );
+        const answersArray = shuffle(answersArrayFlatted);
+        setAnswers(answersArray);
+      }
+      fetchUsers();
     }
-    fetchUsers();
   }, [score, lives]);
 
   //Flat the answer Array
@@ -59,6 +65,8 @@ function App() {
 
   function restartGame() {
     setLives(3);
+    setScore(0);
+    setData([{}]);
   }
 
   if (lives === 0) {
