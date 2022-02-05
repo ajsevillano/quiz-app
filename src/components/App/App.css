@@ -14,9 +14,13 @@
   min-height: 7vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: #1abc9c;
   color: white;
+}
+
+.score > h1 {
+  margin: 0;
 }
 
 .App-header {
