@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Card from '../Card/';
 import Questions from '../Questions';
+import TimerBar from '../Timerbar';
 
 function App() {
   const [data, setData] = useState([{}]);
@@ -19,16 +20,22 @@ function App() {
       //Store the response.
       const response = await fetchResponse.json();
       setData(response.results);
+
       //Store the answers
-      const answersArrayFlatted = [
+      const answersArrayFlatted = flatAnswerArray(
         response.results[0].correct_answer,
-        response.results[0].incorrect_answers,
-      ].flat();
+        response.results[0].incorrect_answers
+      );
       const answersArray = shuffle(answersArrayFlatted);
       setAnswers(answersArray);
     }
     fetchUsers();
   }, [score]);
+
+  //Flat the answer Array
+  function flatAnswerArray(rightAnswer, wrongAnswers) {
+    return [rightAnswer, wrongAnswers].flat();
+  }
 
   //Shuffle the answersArray
   function shuffle(answers) {
@@ -43,14 +50,6 @@ function App() {
   }
 
   //Check the correct answer
-  function answer1(answer) {
-    if (answer === data[0].correct_answer) {
-      setScore(score + 1);
-    } else {
-      setScore(score - 1);
-    }
-  }
-
   function checkCorrectAnswer(answer) {
     answer === data[0].correct_answer
       ? setScore(score + 1)
@@ -60,6 +59,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="score">Score: {score}</h1>
+      <TimerBar score={score} />
       <header className="App-header">
         <Questions question={data[0].question} />
         <div className="card-container">

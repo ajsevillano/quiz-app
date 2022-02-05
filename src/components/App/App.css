@@ -11,7 +11,7 @@
 
 .score {
   margin: 0;
-  min-height: 8vh;
+  min-height: 7vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 92vh;
   display: flex;
   flex-direction: column;
