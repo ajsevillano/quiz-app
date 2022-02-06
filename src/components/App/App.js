@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+//Styles
 import './App.css';
+//Components
 import Card from '../Card/';
 import Questions from '../Questions';
 import TimerBar from '../Timerbar';
-import Button from '../Button';
+import GameOverScreen from '../GameOverScreen';
 
 function App() {
   const [data, setData] = useState([{}]);
@@ -13,7 +15,6 @@ function App() {
 
   useEffect(() => {
     if (lives === 0) {
-      setScore(0);
       setAnswers([]);
       setData([{}]);
     } else {
@@ -60,24 +61,18 @@ function App() {
   //Check the correct answer
   function checkCorrectAnswer(answer) {
     answer === data[0].correct_answer
-      ? setScore(score + 1)
+      ? setScore(score + 10)
       : setLives(lives - 1);
-  }
-
-  function restartGame() {
-    setLives(3);
-    setScore(0);
-    setData([{}]);
   }
 
   if (lives === 0) {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>GAME OVER</h1>
-          <Button handleClick={restartGame} />
-        </header>
-      </div>
+      <GameOverScreen
+        setLives={setLives}
+        setScore={setScore}
+        setData={setData}
+        score={score}
+      />
     );
   } else {
     return (
