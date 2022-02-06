@@ -84,7 +84,12 @@ function App() {
       <div className="App">
         <div className="score">
           <h1>Score: {score}</h1>
-          <h1>Lives: {lives} </h1>
+          <div className="livesContainer">
+            <h1>Lives </h1>
+            {[...Array(lives)].map((stars, index) => (
+              <img key={index} src="./star.png" alt="Star" />
+            ))}
+          </div>
         </div>
 
         <TimerBar

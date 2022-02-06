@@ -44,3 +44,18 @@
   max-width: 900px;
   justify-content: center;
 }
+
+.livesContainer {
+  display: flex;
+  align-items: center;
+}
+
+.livesContainer h1 {
+  margin: 0 1rem 0 0;
+}
+
+.livesContainer img {
+  width: 30px;
+  height: 30px;
+  margin: 0 0.2rem;
+}
