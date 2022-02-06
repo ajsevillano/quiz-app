@@ -3,6 +3,7 @@ import './App.css';
 import Card from '../Card/';
 import Questions from '../Questions';
 import TimerBar from '../Timerbar';
+import Button from '../Button';
 
 function App() {
   const [data, setData] = useState([{}]);
@@ -74,7 +75,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <h1>GAME OVER</h1>
-          <button onClick={restartGame}>Play again?</button>
+          <Button handleClick={restartGame} />
         </header>
       </div>
     );
