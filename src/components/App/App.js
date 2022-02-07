@@ -71,7 +71,7 @@ function App() {
     <MenuScreen>
       <h3>Welcome to Quiz Game!</h3>
       <h5>Choose dificulty </h5>
-      <Button handleClick={restartGame} />
+      <Button buttonText="Start" handleClick={restartGame} />
     </MenuScreen>
   ) : lives < 0 ? (
     //If lives go under 0, show the game over screen
@@ -79,7 +79,7 @@ function App() {
       <h1>GAME OVER</h1>
       <h5>Score: {score} </h5>
       <h5>High Score: --- </h5>
-      <Button handleClick={restartGame} />
+      <Button buttonText="Play again?" handleClick={restartGame} />
     </MenuScreen>
   ) : (
     <Game

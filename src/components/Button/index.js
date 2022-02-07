@@ -1,9 +1,9 @@
 import './Button.css';
 
-const Button = ({ handleClick }) => {
+const Button = ({ buttonText, handleClick }) => {
   return (
     <button className="button" onClick={handleClick}>
-      Play again?
+      {buttonText}
     </button>
   );
 };
