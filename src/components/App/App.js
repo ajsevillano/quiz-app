@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 //Styles
 import './App.css';
 //Components
@@ -6,6 +6,7 @@ import Card from '../Card/';
 import Questions from '../Questions';
 import TimerBar from '../Timerbar';
 import GameOverScreen from '../GameOverScreen';
+import { StartScreen } from '../StartScreen';
 
 function App() {
   const initialLives = 3;
@@ -13,36 +14,27 @@ function App() {
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [lives, setLives] = useState(initialLives);
+  const [startScreen, setStartScreen] = useState(true);
 
-  useEffect(() => {
-    if (lives < 0) {
-      setAnswers([]);
-      setData([{}]);
-    } else {
-      async function fetchUsers() {
-        const fetchResponse = await fetch(
-          'https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple',
-          {
-            method: 'GET',
-          }
-        );
-        //Store the response.
-        const response = await fetchResponse.json();
-        setData(response.results);
-
-        //Store the answers
-        const answersArrayFlatted = flatAnswerArray(
-          response.results[0].correct_answer,
-          response.results[0].incorrect_answers
-        );
-        const answersArray = shuffle(answersArrayFlatted);
-        setAnswers(answersArray);
+  async function fetchQuestion() {
+    const fetchResponse = await fetch(
+      'https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple',
+      {
+        method: 'GET',
       }
-      fetchUsers();
-    }
-  }, [score, lives]);
+    );
+    //Store the response.
+    const response = await fetchResponse.json();
+    setData(response.results);
 
-  console.log(data[0].question);
+    //Store the answers
+    const answersArrayFlatted = flatAnswerArray(
+      response.results[0].correct_answer,
+      response.results[0].incorrect_answers
+    );
+    const answersArray = shuffle(answersArrayFlatted);
+    setAnswers(answersArray);
+  }
 
   //Fix HTML characters
   function sanitizeQuestion() {
@@ -74,10 +66,21 @@ function App() {
     answer === data[0].correct_answer
       ? setScore(score + 10)
       : setLives(lives - 1);
+    fetchQuestion();
   }
 
-  //If lives go under 0, show the game over screen
-  return lives < 0 ? (
+  const restartGame = () => {
+    setLives(3);
+    setScore(0);
+    setData([{}]);
+    setStartScreen(false);
+    fetchQuestion();
+  };
+
+  return startScreen ? (
+    <StartScreen restartGame={restartGame} />
+  ) : lives < 0 ? (
+    //If lives go under 0, show the game over screen
     <GameOverScreen
       setLives={setLives}
       setScore={setScore}

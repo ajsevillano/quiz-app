@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './Timerbar.css';
 
 const TimerBar = ({ score, setScore, lives, setLives }) => {
-  const timeInSeconds = 10;
+  const timeInSeconds = 510;
   const [time, setTime] = useState(timeInSeconds);
   const [barWidth, setbarWidth] = useState(100);
 
