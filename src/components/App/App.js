@@ -69,8 +69,8 @@ function App() {
     return answers;
   }
 
-  //Check the correct answer
-  function checkCorrectAnswer(answer) {
+  //Update the score and the lives
+  function updateScoreAndLives(answer) {
     answer === data[0].correct_answer
       ? setScore(score + 10)
       : setLives(lives - 1);
@@ -112,7 +112,7 @@ function App() {
           {answers.map((answer, index) => {
             return (
               <Card
-                handler={() => checkCorrectAnswer(answer)}
+                handler={() => updateScoreAndLives(answer)}
                 index={index}
                 key={index}
                 answers={answer}
