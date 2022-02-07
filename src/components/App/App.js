@@ -2,9 +2,9 @@ import { useState } from 'react';
 //Styles
 import './App.css';
 
-import GameOverScreen from '../GameOverScreen';
-import { StartScreen } from '../StartScreen';
+import Button from '../Button';
 import { Game } from '../Game';
+import MenuScreen from '../MenuScreen';
 
 function App() {
   const initialLives = 3;
@@ -68,15 +68,19 @@ function App() {
   };
 
   return startScreen ? (
-    <StartScreen restartGame={restartGame} />
+    <MenuScreen>
+      <h3>Welcome to Quiz Game!</h3>
+      <h5>Choose dificulty </h5>
+      <Button handleClick={restartGame} />
+    </MenuScreen>
   ) : lives < 0 ? (
     //If lives go under 0, show the game over screen
-    <GameOverScreen
-      setLives={setLives}
-      setScore={setScore}
-      setData={setData}
-      score={score}
-    />
+    <MenuScreen>
+      <h1>GAME OVER</h1>
+      <h5>Score: {score} </h5>
+      <h5>High Score: --- </h5>
+      <Button handleClick={restartGame} />
+    </MenuScreen>
   ) : (
     <Game
       score={score}
