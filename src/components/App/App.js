@@ -1,12 +1,10 @@
 import { useState } from 'react';
 //Styles
 import './App.css';
-//Components
-import Card from '../Card/';
-import Questions from '../Questions';
-import TimerBar from '../Timerbar';
+
 import GameOverScreen from '../GameOverScreen';
 import { StartScreen } from '../StartScreen';
+import { Game } from '../Game';
 
 function App() {
   const initialLives = 3;
@@ -34,14 +32,6 @@ function App() {
     );
     const answersArray = shuffle(answersArrayFlatted);
     setAnswers(answersArray);
-  }
-
-  //Fix HTML characters
-  function sanitizeQuestion() {
-    return data[0].question
-      ?.replace(/&amp;/g, '&')
-      .replace(/&quot;/g, `'`)
-      .replace(/&#039;/g, `'`);
   }
 
   //Flat the answer Array
@@ -88,43 +78,16 @@ function App() {
       score={score}
     />
   ) : (
-    <div className="App">
-      <div className="score">
-        <h1>Score: {score}</h1>
-        <div className="livesContainer">
-          <h1>Lives </h1>
-          {[...Array(initialLives)].map((stars, index) => {
-            return lives > index ? (
-              <img key={index} src="./star.png" alt="Star" />
-            ) : (
-              <img key={index} src="./staroff.png" alt="Star" />
-            );
-          })}
-        </div>
-      </div>
-
-      <TimerBar
-        score={score}
-        setScore={setScore}
-        lives={lives}
-        setLives={setLives}
-      />
-      <header className="App-header">
-        <Questions question={sanitizeQuestion()} />
-        <div className="card-container">
-          {answers.map((answer, index) => {
-            return (
-              <Card
-                handler={() => updateScoreAndLives(answer)}
-                index={index}
-                key={index}
-                answers={answer}
-              />
-            );
-          })}
-        </div>
-      </header>
-    </div>
+    <Game
+      score={score}
+      setScore={setScore}
+      initialLives={initialLives}
+      lives={lives}
+      setLives={setLives}
+      data={data}
+      answers={answers}
+      updateScoreAndLives={updateScoreAndLives}
+    />
   );
 }
 
