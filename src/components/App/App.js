@@ -42,6 +42,16 @@ function App() {
     }
   }, [score, lives]);
 
+  console.log(data[0].question);
+
+  //Fix HTML characters
+  function sanitizeQuestion() {
+    return data[0].question
+      ?.replace(/&amp;/g, '&')
+      .replace(/&quot;/g, `'`)
+      .replace(/&#039;/g, `'`);
+  }
+
   //Flat the answer Array
   function flatAnswerArray(rightAnswer, wrongAnswers) {
     return [rightAnswer, wrongAnswers].flat();
@@ -66,56 +76,53 @@ function App() {
       : setLives(lives - 1);
   }
 
-  if (lives < 0) {
-    return (
-      <GameOverScreen
-        setLives={setLives}
-        setScore={setScore}
-        setData={setData}
-        score={score}
-      />
-    );
-  } else {
-    return (
-      <div className="App">
-        <div className="score">
-          <h1>Score: {score}</h1>
-          <div className="livesContainer">
-            <h1>Lives </h1>
-            {[...Array(initialLives)].map((stars, index) => {
-              return lives > index ? (
-                <img key={index} src="./star.png" alt="Star" />
-              ) : (
-                <img key={index} src="./staroff.png" alt="Star" />
-              );
-            })}
-          </div>
+  //If lives go under 0, show the game over screen
+  return lives < 0 ? (
+    <GameOverScreen
+      setLives={setLives}
+      setScore={setScore}
+      setData={setData}
+      score={score}
+    />
+  ) : (
+    <div className="App">
+      <div className="score">
+        <h1>Score: {score}</h1>
+        <div className="livesContainer">
+          <h1>Lives </h1>
+          {[...Array(initialLives)].map((stars, index) => {
+            return lives > index ? (
+              <img key={index} src="./star.png" alt="Star" />
+            ) : (
+              <img key={index} src="./staroff.png" alt="Star" />
+            );
+          })}
         </div>
-
-        <TimerBar
-          score={score}
-          setScore={setScore}
-          lives={lives}
-          setLives={setLives}
-        />
-        <header className="App-header">
-          <Questions question={data[0].question} />
-          <div className="card-container">
-            {answers.map((answer, index) => {
-              return (
-                <Card
-                  handler={() => checkCorrectAnswer(answer)}
-                  index={index}
-                  key={index}
-                  answers={answer}
-                />
-              );
-            })}
-          </div>
-        </header>
       </div>
-    );
-  }
+
+      <TimerBar
+        score={score}
+        setScore={setScore}
+        lives={lives}
+        setLives={setLives}
+      />
+      <header className="App-header">
+        <Questions question={sanitizeQuestion()} />
+        <div className="card-container">
+          {answers.map((answer, index) => {
+            return (
+              <Card
+                handler={() => checkCorrectAnswer(answer)}
+                index={index}
+                key={index}
+                answers={answer}
+              />
+            );
+          })}
+        </div>
+      </header>
+    </div>
+  );
 }
 
 export default App;

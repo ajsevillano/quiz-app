@@ -3,7 +3,6 @@ import './GameOverScreen.css';
 
 const GameOverScreen = ({ setLives, setScore, setData, score }) => {
   //Handle restart the Game
-
   const restartGame = () => {
     setLives(3);
     setScore(0);
