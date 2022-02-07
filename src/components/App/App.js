@@ -8,13 +8,14 @@ import TimerBar from '../Timerbar';
 import GameOverScreen from '../GameOverScreen';
 
 function App() {
+  const initialLives = 3;
   const [data, setData] = useState([{}]);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [lives, setLives] = useState(3);
+  const [lives, setLives] = useState(initialLives);
 
   useEffect(() => {
-    if (lives === 0) {
+    if (lives < 0) {
       setAnswers([]);
       setData([{}]);
     } else {
@@ -65,7 +66,7 @@ function App() {
       : setLives(lives - 1);
   }
 
-  if (lives === 0) {
+  if (lives < 0) {
     return (
       <GameOverScreen
         setLives={setLives}
@@ -81,9 +82,13 @@ function App() {
           <h1>Score: {score}</h1>
           <div className="livesContainer">
             <h1>Lives </h1>
-            {[...Array(lives)].map((stars, index) => (
-              <img key={index} src="./star.png" alt="Star" />
-            ))}
+            {[...Array(initialLives)].map((stars, index) => {
+              return lives > index ? (
+                <img key={index} src="./star.png" alt="Star" />
+              ) : (
+                <img key={index} src="./staroff.png" alt="Star" />
+              );
+            })}
           </div>
         </div>
 
