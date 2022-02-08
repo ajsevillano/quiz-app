@@ -2,3 +2,10 @@
   width: 70%;
   margin-bottom: 3rem;
 }
+
+@media screen and (max-width: 414px) {
+  .question {
+    font-size: 1.5rem;
+    width: 90%;
+  }
+}

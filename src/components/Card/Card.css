@@ -55,7 +55,10 @@
 
 @media screen and (max-width: 414px) {
   .card {
-    height: 85px;
+    height: 90px;
     width: 85%;
+  }
+  .card p {
+    font-size: 1.3rem;
   }
 }

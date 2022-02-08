@@ -50,3 +50,9 @@
   visibility: hidden;
   opacity: 0;
 }
+
+@media screen and (max-width: 414px) {
+  .menu-screen-modal {
+    min-width: 85%;
+  }
+}
