@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 //Styles
 import './App.css';
-
+//Components
 import Button from '../Button';
 import { Game } from '../Game';
 import MenuScreen from '../MenuScreen';
+//Libs
+import fetchQuestion from '../../libs/fetch.js';
 
 function App() {
   const initialLives = 3;
@@ -21,49 +23,12 @@ function App() {
       : score > highScore && window.localStorage.setItem('highScore', score);
   });
 
-  async function fetchQuestion() {
-    const fetchResponse = await fetch(
-      'https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple',
-      {
-        method: 'GET',
-      }
-    );
-    //Store the response.
-    const response = await fetchResponse.json();
-    setData(response.results);
-
-    //Store the answers
-    const answersArrayFlatted = flatAnswerArray(
-      response.results[0].correct_answer,
-      response.results[0].incorrect_answers
-    );
-    const answersArray = shuffle(answersArrayFlatted);
-    setAnswers(answersArray);
-  }
-
-  //Flat the answer Array
-  function flatAnswerArray(rightAnswer, wrongAnswers) {
-    return [rightAnswer, wrongAnswers].flat();
-  }
-
-  //Shuffle the answersArray
-  function shuffle(answers) {
-    var j, x, i;
-    for (i = answers.length - 1; i > 0; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      x = answers[i];
-      answers[i] = answers[j];
-      answers[j] = x;
-    }
-    return answers;
-  }
-
   //Update the score and the lives
   function updateScoreAndLives(answer) {
     answer === data[0].correct_answer
       ? setScore(score + 10)
       : setLives(lives - 1);
-    fetchQuestion();
+    fetchQuestion(setData, setAnswers);
   }
 
   //When game is over it will reset all the states
@@ -73,7 +38,7 @@ function App() {
     setData([{}]);
     setAnswers([]);
     setStartScreen(false);
-    fetchQuestion();
+    fetchQuestion(setData, setAnswers);
   };
 
   return startScreen ? (
