@@ -1,5 +1,4 @@
 .button {
-  background-color: #1abc9c;
   padding: 1rem;
   border: none;
   color: white;
@@ -14,4 +13,12 @@
 
 .button:active {
   transform: scale(0.9);
+}
+
+.button-green {
+  background-color: #1abc9c;
+}
+
+.button-purple {
+  background-color: #9b59b6;
 }

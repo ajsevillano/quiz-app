@@ -53,7 +53,10 @@ function App() {
       <h1>GAME OVER</h1>
       <h5>Score: {score} </h5>
       <h5>High Score: {highScore} </h5>
-      <Button buttonText="Play again?" handleClick={resetGame} />
+      <div className="menu-buttons-container">
+        <Button buttonText="Menu" handleClick={resetGame} color="purple" />
+        <Button buttonText="Play again" handleClick={resetGame} color="green" />
+      </div>
     </MenuScreen>
   ) : (
     <Game
