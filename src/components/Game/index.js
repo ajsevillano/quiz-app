@@ -12,6 +12,8 @@ export const Game = ({
   data,
   answers,
   updateScoreAndLives,
+  setData,
+  setAnswers,
 }) => {
   //Fix HTML characters
   function sanitizeQuestion() {
@@ -41,6 +43,8 @@ export const Game = ({
         setScore={setScore}
         lives={lives}
         setLives={setLives}
+        setData={setData}
+        setAnswers={setAnswers}
       />
       <header className="App-header">
         <Questions question={sanitizeQuestion()} />

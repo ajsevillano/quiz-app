@@ -65,6 +65,8 @@ function App() {
       data={data}
       answers={answers}
       updateScoreAndLives={updateScoreAndLives}
+      setData={setData}
+      setAnswers={setAnswers}
     />
   );
 }
