@@ -43,8 +43,9 @@ function App() {
 
   return startScreen ? (
     <MenuScreen>
-      <h3>Welcome to Quiz Game!</h3>
-      <h5>Choose dificulty </h5>
+      <img className="logo-quiz" src="logo-quiz.png" alt="Logo" />
+      <h3 className="welcome-quiz">Welcome to Quiz Game!</h3>
+      <h5 className="choose-difficulty">Choose dificulty </h5>
       <Button buttonText="Start" handleClick={resetGame} color="purple" />
     </MenuScreen>
   ) : lives < 0 ? (
