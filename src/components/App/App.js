@@ -45,14 +45,18 @@ function App() {
     <MenuScreen>
       <h3>Welcome to Quiz Game!</h3>
       <h5>Choose dificulty </h5>
-      <Button buttonText="Start" handleClick={resetGame} />
+      <Button buttonText="Start" handleClick={resetGame} color="purple" />
     </MenuScreen>
   ) : lives < 0 ? (
     //If lives go under 0, show the game over screen
     <MenuScreen>
+      <img className="trophy-icon" src="./trophy.png" alt="trophy" />
+      <h5 className="high-score">High Score: {highScore} </h5>
       <h1>GAME OVER</h1>
-      <h5>Score: {score} </h5>
-      <h5>High Score: {highScore} </h5>
+      <p className="game-over-subtext">Well done! Don't give up!</p>
+      <h5 className="score-text">
+        Score: <span className="score-number"> {score}</span>
+      </h5>
       <div className="menu-buttons-container">
         <Button buttonText="Menu" handleClick={resetGame} color="purple" />
         <Button buttonText="Play again" handleClick={resetGame} color="green" />
