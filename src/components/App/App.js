@@ -67,6 +67,7 @@ function App() {
     setLives(3);
     setData([{}]);
     setAnswers([]);
+    setScore(0);
     setGameScreens(setGameScreen);
     fetchQuestion(setData, setAnswers);
   };
