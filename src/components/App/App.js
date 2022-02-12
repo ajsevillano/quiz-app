@@ -25,6 +25,7 @@ function App() {
   const [answers, setAnswers] = useState([]);
   const [lives, setLives] = useState(initialStates.initialLives);
   const [gameScreens, setGameScreens] = useState(initialStates.initialScreens);
+  const [screenAnimation, setScreenAnimation] = useState(false);
 
   //Create or Update the highscore
   useEffect(() => {
@@ -32,6 +33,11 @@ function App() {
       ? window.localStorage.setItem('highScore', 0)
       : score > highScore && window.localStorage.setItem('highScore', score);
   });
+
+  //Run the fade in animation on game start
+  useEffect(() => {
+    setScreenAnimation(true);
+  }, []);
 
   //Check if the game is over
   useEffect(() => {
@@ -43,6 +49,9 @@ function App() {
       });
       setLives(0);
       setGameScreens(setGameOverScreen);
+      setTimeout(() => {
+        setScreenAnimation(true);
+      }, 100);
     };
 
     //If lives are less than 0 load the game over screen
@@ -68,6 +77,7 @@ function App() {
     setData([{}]);
     setAnswers([]);
     setScore(0);
+    setScreenAnimation(false);
     setGameScreens(setGameScreen);
     fetchQuestion(setData, setAnswers);
   };
@@ -78,7 +88,7 @@ function App() {
   return (
     <>
       {mainMenu.isActive && (
-        <MenuScreen>
+        <MenuScreen screenAnimation={screenAnimation}>
           <img className="logo-quiz" src="logo-quiz.png" alt="Logo" />
           <h3 className="welcome-quiz">Welcome to Quiz Game!</h3>
           <h5 className="choose-difficulty">Choose dificulty </h5>
@@ -104,7 +114,7 @@ function App() {
         />
       )}
       {gameover.isActive && (
-        <MenuScreen>
+        <MenuScreen screenAnimation={screenAnimation}>
           <img className="trophy-icon" src="./trophy.png" alt="trophy" />
           <h5 className="high-score">High Score: {highScore} </h5>
           <h1>GAME OVER</h1>
