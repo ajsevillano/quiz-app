@@ -26,7 +26,6 @@ function App() {
   const [lives, setLives] = useState(initialStates.initialLives);
   const [gameScreens, setGameScreens] = useState(initialStates.initialScreens);
   const [screenAnimation, setScreenAnimation] = useState(false);
-
   //Create or Update the highscore
   useEffect(() => {
     highScore.length === 0
@@ -92,11 +91,7 @@ function App() {
           <img className="logo-quiz" src="logo-quiz.png" alt="Logo" />
           <h3 className="welcome-quiz">Welcome to Quiz Game!</h3>
           <h5 className="choose-difficulty">Choose dificulty </h5>
-          <Button
-            buttonText="Start"
-            handleClick={() => resetGame()}
-            color="purple"
-          />
+          <Button buttonText="Start" handleClick={resetGame} color="purple" />
         </MenuScreen>
       )}
       {game.isActive && (

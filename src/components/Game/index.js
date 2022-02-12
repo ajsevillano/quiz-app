@@ -20,6 +20,7 @@ export const Game = ({
     return data[0].question
       ?.replace(/&amp;/g, '&')
       .replace(/&quot;/g, `'`)
+      .replace(/&eacute;/g, `é`)
       .replace(/&#039;/g, `'`);
   }
   return (
