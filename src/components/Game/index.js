@@ -14,6 +14,8 @@ export const Game = ({
   updateScoreAndLives,
   setData,
   setAnswers,
+  righAnswer,
+  correcto,
 }) => {
   //Fix HTML characters
   function sanitizeQuestion() {
@@ -57,6 +59,8 @@ export const Game = ({
                 index={index}
                 key={index}
                 answers={answer}
+                righAnswer={righAnswer}
+                correcto={correcto}
               />
             );
           })}

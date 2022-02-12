@@ -15,8 +15,8 @@
 }
 
 .card:hover {
-  background-color: #939db3;
-  color: white;
+  /* background-color: #939db3; */
+  /* color: white; */
   cursor: pointer;
 }
 
@@ -51,6 +51,12 @@
 
 .dark-blue {
   background-color: #34495e;
+}
+
+.realgreen {
+  background-color: #1abc9c;
+  color: white;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 414px) {

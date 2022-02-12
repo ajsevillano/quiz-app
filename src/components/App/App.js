@@ -26,6 +26,7 @@ function App() {
   const [lives, setLives] = useState(initialStates.initialLives);
   const [gameScreens, setGameScreens] = useState(initialStates.initialScreens);
   const [screenAnimation, setScreenAnimation] = useState(false);
+  const [correcto, setCorrecto] = useState(false);
   //Create or Update the highscore
   useEffect(() => {
     highScore.length === 0
@@ -57,12 +58,21 @@ function App() {
     lives === -1 && setStates();
   }, [gameScreens, lives]);
 
+  const realone = () => {
+    setCorrecto(true);
+    setTimeout(() => {
+      setCorrecto(false);
+      setScore(score + 10);
+    }, 1000);
+  };
+
   //Update the score and the lives
   function updateScoreAndLives(answer) {
-    answer === data[0].correct_answer
-      ? setScore(score + 10)
-      : setLives(lives - 1);
-    fetchQuestion(setData, setAnswers);
+    answer === data[0].correct_answer ? realone() : setLives(lives - 1);
+
+    setTimeout(() => {
+      fetchQuestion(setData, setAnswers);
+    }, 1000);
   }
 
   //When game is over it will reset all the states
@@ -106,6 +116,8 @@ function App() {
           updateScoreAndLives={updateScoreAndLives}
           setData={setData}
           setAnswers={setAnswers}
+          righAnswer={data[0].correct_answer}
+          correcto={correcto}
         />
       )}
       {gameover.isActive && (
