@@ -15,7 +15,7 @@ export const Game = ({
   setData,
   setAnswers,
   righAnswer,
-  correcto,
+  correctAnswer,
 }) => {
   //Fix HTML characters
   function sanitizeQuestion() {
@@ -60,7 +60,7 @@ export const Game = ({
                 key={index}
                 answers={answer}
                 righAnswer={righAnswer}
-                correcto={correcto}
+                correctAnswer={correctAnswer}
               />
             );
           })}

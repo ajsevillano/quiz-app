@@ -17,3 +17,7 @@ h2,
 p {
   margin: 0;
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}

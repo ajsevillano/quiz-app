@@ -23,9 +23,9 @@ function flatAnswerArray(rightAnswer, wrongAnswers) {
   return [rightAnswer, wrongAnswers].flat();
 }
 
-//Shuffle the answersArray
+//Shuffle the answersArray using Fisher Yates algorithm
 function shuffle(answers) {
-  var j, x, i;
+  let j, x, i;
   for (i = answers.length - 1; i > 0; i--) {
     j = Math.floor(Math.random() * (i + 1));
     x = answers[i];
