@@ -20,6 +20,10 @@
   cursor: pointer;
 }
 
+.card:active {
+  transform: scale(0.9);
+}
+
 .card p {
   margin: 0 1.5rem;
   font-weight: 500;
