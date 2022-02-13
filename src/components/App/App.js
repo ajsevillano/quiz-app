@@ -78,9 +78,10 @@ function App() {
   }
 
   //When game is over it will reset all the states
-  const resetGame = () => {
+  function startNewGame(option) {
+    console.log(option);
     const setGameScreen = gameScreens.map((obj) => {
-      return obj.name === 'game'
+      return obj.name === option
         ? { ...obj, isActive: true }
         : { ...obj, isActive: false };
     });
@@ -88,10 +89,10 @@ function App() {
     setData([{}]);
     setAnswers([]);
     setScore(0);
-    setScreenAnimation(false);
+    option === 'game' ? setScreenAnimation(false) : setScreenAnimation(true);
     setGameScreens(setGameScreen);
-    fetchQuestion(setData, setAnswers);
-  };
+    option === 'game' && fetchQuestion(setData, setAnswers);
+  }
 
   //Destructure the screens
   const [mainMenu, gameover, game] = gameScreens;
@@ -103,7 +104,11 @@ function App() {
           <img className="logo-quiz" src="logo-quiz.png" alt="Logo" />
           <h3 className="welcome-quiz">Welcome to Quiz Game!</h3>
           <h5 className="choose-difficulty">Choose dificulty </h5>
-          <Button buttonText="Start" handleClick={resetGame} color="purple" />
+          <Button
+            buttonText="Start"
+            handleClick={() => startNewGame('game')}
+            color="purple"
+          />
         </MenuScreen>
       )}
       {game.isActive && (
@@ -132,10 +137,14 @@ function App() {
             Score: <span className="score-number"> {score}</span>
           </h5>
           <div className="menu-buttons-container">
-            <Button buttonText="Menu" handleClick={resetGame} color="purple" />
+            <Button
+              buttonText="Menu"
+              handleClick={() => startNewGame('menu')}
+              color="purple"
+            />
             <Button
               buttonText="Play again"
-              handleClick={resetGame}
+              handleClick={() => startNewGame('game')}
               color="green"
             />
           </div>
