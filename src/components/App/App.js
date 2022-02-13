@@ -79,7 +79,6 @@ function App() {
 
   //When game is over it will reset all the states
   function startNewGame(option) {
-    console.log(option);
     const setGameScreen = gameScreens.map((obj) => {
       return obj.name === option
         ? { ...obj, isActive: true }
