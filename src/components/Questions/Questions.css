@@ -1,5 +1,5 @@
 .question-container {
-  min-height: 11.625rem;
+  min-height: 9.625rem;
   width: 70%;
   margin: 1rem 0;
 }
@@ -14,7 +14,7 @@
 
 @media screen and (max-width: 414px) {
   .question-container {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     width: 90%;
   }
 
