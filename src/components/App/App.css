@@ -76,4 +76,8 @@
   .livesContainer h1 {
     font-size: 1.4rem;
   }
+
+  .App-header {
+    justify-content: flex-start;
+  }
 }

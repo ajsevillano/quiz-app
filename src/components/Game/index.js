@@ -16,6 +16,7 @@ export const Game = ({
   setAnswers,
   righAnswer,
   correctAnswer,
+  category,
 }) => {
   //Fix HTML characters
   function sanitizeQuestion() {
@@ -50,7 +51,7 @@ export const Game = ({
         setAnswers={setAnswers}
       />
       <header className="App-header">
-        <Questions question={sanitizeQuestion()} />
+        <Questions category={category} question={sanitizeQuestion()} />
         <div className="card-container">
           {answers.map((answer, index) => {
             return (

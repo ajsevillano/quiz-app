@@ -1,12 +1,25 @@
-.question {
+.question-container {
+  min-height: 11.625rem;
   width: 70%;
   margin: 1rem 0;
-  min-height: 8.625rem;
+}
+
+.question {
+  margin: 0;
+}
+
+.category {
+  color: #f8d753;
 }
 
 @media screen and (max-width: 414px) {
-  .question {
+  .question-container {
     font-size: 1.5rem;
     width: 90%;
+  }
+
+  .category {
+    font-size: 1.4rem;
+    margin: 0.7rem 0 0 0;
   }
 }

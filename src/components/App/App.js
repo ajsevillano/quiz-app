@@ -124,6 +124,7 @@ function App() {
           setAnswers={setAnswers}
           righAnswer={data[0].correct_answer}
           correctAnswer={correctAnswer}
+          category={data[0].category}
         />
       )}
       {gameover.isActive && (
