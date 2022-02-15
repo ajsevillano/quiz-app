@@ -10,7 +10,7 @@ const TimerBar = ({
   setData,
   setAnswers,
 }) => {
-  const timeInSeconds = 2342315;
+  const timeInSeconds = 15;
   const [time, setTime] = useState(timeInSeconds);
   const [barWidth, setbarWidth] = useState(100);
 

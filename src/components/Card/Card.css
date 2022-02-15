@@ -56,6 +56,11 @@
   background-color: #34495e;
 }
 
+.color-error {
+  background-color: #cf6a87;
+  color: white;
+}
+
 .realgreen {
   background-color: #1abc9c;
   color: white;
