@@ -7,7 +7,7 @@ const Card = ({ index, answers, handler, righAnswer, correctAnswer }) => {
   return (
     <div
       className={`card ${
-        correctAnswer && righAnswer === answers && 'realgreen'
+        correctAnswer && righAnswer === answers ? 'realgreen' : ''
       }`}
       onClick={handler}
     >

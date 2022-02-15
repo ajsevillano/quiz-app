@@ -16,8 +16,6 @@
 }
 
 .card:hover {
-  /* background-color: #939db3; */
-  /* color: white; */
   cursor: pointer;
 }
 
@@ -66,10 +64,20 @@
 
 @media screen and (max-width: 414px) {
   .card {
-    height: 90px;
+    height: 70px;
     width: 85%;
   }
   .card p {
     font-size: 1.3rem;
+  }
+
+  .answer-letter {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    font-size: 1.4rem;
+    justify-content: center;
   }
 }
