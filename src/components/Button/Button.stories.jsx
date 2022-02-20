@@ -1,25 +1,47 @@
-import Button from './index';
+import React from 'react';
+import Button from '.';
 
+const componentDescription = `
+Buttons are used for triggering actions. There are different types of buttons...
+
+\`\`\`js
+import { Button } from 'components/Button'
+\`\`\`
+`;
+
+//Button component description
 export default {
   title: 'Components/Buttons',
   Component: Button,
   parameters: {
-    componentSubtitle: 'All the buttons variants',
+    componentSubtitle: 'Initiates an action',
+    docs: { description: { component: componentDescription } },
   },
 };
 
 const Template = (args) => <Button {...args} />;
 
-export const Purple = Template.bind({});
+//Default variant:purple
 
-export const Red = Template.bind({});
+export const Purple = Template.bind({});
 
 Purple.args = {
   buttonText: 'Button',
   color: 'purple',
 };
 
-Red.args = {
-  buttonText: 'Button',
+//Variant: green
+
+export const Green = Template.bind({});
+
+Green.args = {
+  buttonText: 'Play again?',
   color: 'green',
+};
+Green.parameters = {
+  docs: {
+    description: {
+      story: 'Used for the game over screen.',
+    },
+  },
 };
