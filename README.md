@@ -1,37 +1,46 @@
-# Quiz App
+<div align="center">
+  <img src="logo.png" alt="quiz-app" width="480"/>
 
-> A React quiz app that fetches trivia questions from the [Open Trivia Database](https://opentdb.com) API. Features a countdown timer, star rating, and a Storybook setup for the UI components.
+  [![React](https://img.shields.io/badge/React_17-61DAFB?style=flat&logo=react&logoColor=black)](https://reactjs.org/)
+  [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+  [![Storybook](https://img.shields.io/badge/Storybook_v6-FF4785?style=flat&logo=storybook&logoColor=white)](https://storybook.js.org/)
 
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![Storybook](https://img.shields.io/badge/Storybook-FF4785?style=flat&logo=storybook&logoColor=white)
+  **🧠 Trivia quiz app with a countdown timer, star rating, and randomized answers — powered by the Open Trivia DB 🏆**
 
-## Features
+</div>
 
-- Trivia questions fetched from the Open Trivia Database (easy difficulty, multiple choice)
-- Answer shuffling using the Fisher-Yates algorithm
-- Countdown timer bar per question
-- Trophy/score screen at the end
-- Storybook stories for the Button component
+---
 
-## Getting Started
+## ✨ Features
+
+- ❓ **Live trivia questions** fetched from the [Open Trivia Database](https://opentdb.com) — easy difficulty, multiple choice
+- 🔀 **Randomized answers** — shuffled with Fisher-Yates on every question
+- ⏱️ **Countdown timer bar** — visual pressure per question
+- ⭐ **Star rating** — score shown as stars at the end
+- 🏆 **Trophy screen** — final score celebration
+- 📖 **Storybook** — stories for the Button component
+
+## 🚀 Quick Start
 
 ```bash
-# Install dependencies
 npm install
-
-# Run the app
 npm start
+```
 
-# Run Storybook
+Open `http://localhost:3000`.
+
+## 📖 Storybook
+
+```bash
 npm run storybook
 ```
 
-Open `http://localhost:3000` in your browser.
+Open `http://localhost:6006` to browse components in isolation.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- React 17
-- Open Trivia Database API
-- Storybook v6
-- React Testing Library
+- **React 17**
+- **Open Trivia Database API** — free, no key required
+- **Storybook v6**
+- **React Testing Library**
+- **Create React App**
